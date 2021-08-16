@@ -74,3 +74,21 @@ const maximumValue = (arr) =>{
 }
 testMaximumValue1()
 testMaximumValue2()
+
+function testCalculateRemainder1(){
+    result = calculateRemainder(3,2)
+    expected = 1
+    console.assert(result===expected, `esperado ${expected}, obtido ${result}`)
+}
+function testCalculateRemainder2(){
+    result = calculateRemainder(4,5)
+    expected = 4
+    console.assert(result===expected, `esperado ${expected}, obtido ${result}`)
+}
+
+const calculateRemainder = (num,divisor) =>{
+    let remainder = num % divisor
+    return remainder
+}
+testCalculateRemainder1()
+testCalculateRemainder2()
