@@ -36,3 +36,22 @@ const reverseSentence = (str) =>{
 }
 testReverseSentence1()
 testReverseSentence2()
+
+function testMinimumValue1(){
+    result = minimumValue([-55,0,1,2,5,88,45])
+    expected = -55
+    console.assert(result===expected, `esperado ${expected}, obtido ${result}}`)
+}
+
+function testMinimumValue2(){
+    result = minimumValue([45,89,75,12,94,35])
+    expected = 12
+    console.assert(result===expected, `esperado ${expected}, obtido ${result}}`)
+}
+
+const minimumValue = (arr) =>{
+    let min = Math.min(...arr)
+    return min
+}
+testMinimumValue1()
+testMinimumValue2()
