@@ -55,3 +55,22 @@ const minimumValue = (arr) =>{
 }
 testMinimumValue1()
 testMinimumValue2()
+
+function testMaximumValue1(){
+    result = maximumValue([-55,0,1,2,5,88,45])
+    expected = 88
+    console.assert(result===expected, `esperado ${expected}, obtido ${result}}`)
+}
+
+function testMaximumValue2(){
+    result = maximumValue([-45,-89,-75,-12,-94,-35])
+    expected = -12
+    console.assert(result===expected, `esperado ${expected}, obtido ${result}}`)
+}
+
+const maximumValue = (arr) =>{
+    let max = Math.max(...arr)
+    return max
+}
+testMaximumValue1()
+testMaximumValue2()
