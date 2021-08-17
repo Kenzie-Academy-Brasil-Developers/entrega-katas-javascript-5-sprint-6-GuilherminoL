@@ -94,41 +94,72 @@ testCalculateRemainder1()
 testCalculateRemainder2()
 
 function testDistinctValues1() {
-    let result = distinctValues([0,0,0,1,2,3,3,4,5,6,5,5])
-    let expected = [0,1,2,3,4,5,6]
+    let result = distinctValues('0 0 0 1 2 3 3 4 5 6 5 5')
+    let expected = '0 1 2 3 4 5 6'
     let control = true
     for (index of expected){
         if (expected[index] !== result[index]){
             control = false
         }
     }
-    console.assert(control === true, `esperado: ${expected} recebido: ${result}`)
+    console.assert(expected===result, `esperado: ${expected} recebido: ${result}`)
 }
 function testDistinctValues2() {
-    let result = distinctValues([9,9,4,5,5,3,6,9,8])
-    let expected = [3,4,5,6,8,9]
+    let result = distinctValues('9 9 4 5 5 3 6 9 8')
+    let expected = '3 4 5 6 8 9'
     let control = true
     for (index of expected){
         if (expected[index] !== result[index]){
             control = false
         }
     }
-    console.assert(control === true, `esperado: ${expected} recebido: ${result}`)
+    console.assert(expected===result, `esperado: ${expected} recebido: ${result}`)
 }
-const distinctValues = (arr) =>{
+const distinctValues = (str) =>{
     let obj = {}
-    arr.map(element =>{
+    str = str.split(' ')
+    str.map(element =>{
         
         if(!obj[element]){
             obj[element] = 0
         }
     })
     
-    let output = []
-    for (key in obj) {
-        output.push(Number(key))
-    }
-    return output
+    let output = Object.keys(obj)
+    return output.join(' ')
 }
 testDistinctValues1()
 testDistinctValues2()
+
+function testCountValues1(){
+    let result = countValues("1 3 5 3 7 3 1 1 5")
+    let expected = '1(3) 3(3) 5(2) 7(1)'
+    console.assert(result === expected, `esperado:${expected} recebido: ${result}`)
+}
+
+function testCountValues2(){
+    let result = countValues("0 5 5 6 4 2 9 7 7 4 6")
+    let expected = '0(1) 2(1) 4(2) 5(2) 6(2) 7(2) 9(1)'
+    console.assert(result === expected, `esperado:${expected} recebido: ${result}`)
+}
+
+const countValues = (str) => {
+    let numbers  = str.split(' ')
+    let obj = {}
+    let output = []
+    numbers.map(element =>{
+        
+        if(!obj[element]){
+            obj[element] = 1
+        }
+        else{
+            obj[element]++
+        }
+    })
+    for(key in obj){
+        output.push(`${key}(${obj[key]})`)
+    }
+    return output.join(' ')
+}
+testCountValues1()
+testCountValues2()
