@@ -92,3 +92,43 @@ const calculateRemainder = (num,divisor) =>{
 }
 testCalculateRemainder1()
 testCalculateRemainder2()
+
+function testDistinctValues1() {
+    let result = distinctValues([0,0,0,1,2,3,3,4,5,6,5,5])
+    let expected = [0,1,2,3,4,5,6]
+    let control = true
+    for (index of expected){
+        if (expected[index] !== result[index]){
+            control = false
+        }
+    }
+    console.assert(control === true, `esperado: ${expected} recebido: ${result}`)
+}
+function testDistinctValues2() {
+    let result = distinctValues([9,9,4,5,5,3,6,9,8])
+    let expected = [3,4,5,6,8,9]
+    let control = true
+    for (index of expected){
+        if (expected[index] !== result[index]){
+            control = false
+        }
+    }
+    console.assert(control === true, `esperado: ${expected} recebido: ${result}`)
+}
+const distinctValues = (arr) =>{
+    let obj = {}
+    arr.map(element =>{
+        
+        if(!obj[element]){
+            obj[element] = 0
+        }
+    })
+    
+    let output = []
+    for (key in obj) {
+        output.push(Number(key))
+    }
+    return output
+}
+testDistinctValues1()
+testDistinctValues2()
